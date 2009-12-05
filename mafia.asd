@@ -1,5 +1,5 @@
 (asdf:defsystem #:mafia
-  :name "Mafia Wars"
+  :name "Mafia Game"
   :author "Chris Foley"
   :version "0.0.1"
   :components
