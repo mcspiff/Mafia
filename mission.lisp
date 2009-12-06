@@ -26,7 +26,8 @@
 (defgeneric do-mission-with-player (mission player))
 
 (defmethod do-mission-with-player ((player player) (mission mission))
-  (when (>= (energy player) (energy mission))
+  (when (and (>= (energy player) (energy mission))
+	     )
     (decf (energy player)     (energy mission))
     (incf (money player)      (money mission))
     (incf (experience player) (experience mission))))
@@ -39,5 +40,3 @@
 
 (defun do-mission (mission)
   (do-mission-with-player *player* mission))
-
-
