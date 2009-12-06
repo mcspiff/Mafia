@@ -16,3 +16,8 @@
     (print-unreadable-object (player stream :type t :identity t)
       (format stream "Name: ~a; Money ~a: Energy ~a;" name money energy))))
 
+(defun add-item (item &optional (player *player*))
+  (incf (getf (items player) item 0)))
+
+(defun player-has-item? (item &optional &key (quantity 1) (player *player*))
+  (= quantity (getf (items player) item 0)))
