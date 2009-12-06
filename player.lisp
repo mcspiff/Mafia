@@ -7,7 +7,7 @@
    (energy     :accessor energy     :initarg :energy     :initform 15)
    (experience :accessor experience :initarg :experience :initform 0)
    (level      :accessor level      :initarg :level      :initform 1)
-   (items      :accessor items      :initarg :items      :initform (make-hash-table))))
+   (items      :accessor items      :initarg :items      :initform (make-items))))
 
 (defvar *player* (make-instance 'player))
 

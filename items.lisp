@@ -1,4 +1,6 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
+(defun make-items ()
+  (make-hash-table))
 
 (defun add-item (item place &optional &key (quantity 1))
   (incf (gethash item (items place) 0) quantity))
