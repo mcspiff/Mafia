@@ -5,5 +5,6 @@
   :license "GPLv2"
   :components
   ((:file "mafia-package")
-   (:file "player" :depends-on ("mafia-package"))
-   (:file "mission" :depends-on ("mafia-package" "player"))))
+   (:file "items" :depends-on ("mafia-package"))
+   (:file "player" :depends-on ("mafia-package" "items"))
+   (:file "mission" :depends-on ("mafia-package" "player" "items"))))
