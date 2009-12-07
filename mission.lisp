@@ -2,14 +2,14 @@
 (in-package #:mafia)
 
 (defclass mission ()
-  ((name           :accessor name           :initarg :name)
-   (money          :accessor money          :initarg :money)
-   (energy         :accessor energy         :initarg :energy)
-   (required-items :accessor required-items :initarg :required-items)
-   (experience     :accessor experience     :initarg :experience)))
+  ((name       :accessor name       :initarg :name)
+   (money      :accessor money      :initarg :money)
+   (energy     :accessor energy     :initarg :energy)
+   (items      :accessor items      :initarg :items)
+   (experience :accessor experience :initarg :experience)))
 
-(defun make-job (name money energy required-items experience)
-  (make-instance 'mission :name name :money money :required-items required-items :experience experience :energy energy))
+(defun make-job (name money energy items experience)
+  (make-instance 'mission :name name :money money :items items :experience experience :energy energy))
 
 (defmethod print-object ((mission mission) stream)
   (with-slots (name money energy) mission
@@ -30,13 +30,13 @@
 	     )
     (decf (energy player)     (energy mission))
     (incf (money player)      (money mission))
-    (incf (experience player) (experience mission))))
+    (incf (experience player) (experience mission))
+    (format t "~&~a is doing mission ~a for $~a which costs ~a energy" player
+	    (name mission)
+	    (money mission)
+	    (energy mission))))
 
-(defmethod do-mission-with-player :after (player mission)
-  (format t "~&~a is doing mission ~a for $~a which costs ~a energy" player
-	  (name mission)
-	  (money mission)
-	  (energy mission)))
+
 
 (defun do-mission (mission)
   (do-mission-with-player *player* mission))

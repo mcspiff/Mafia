@@ -17,5 +17,5 @@
       (>= (gethash item (items place) 0) quantity)))
 
 (defun verify-items (mission player)
-  (loop for item being the hash-key in (items mission) always (= (gethash item (items mission) 0)
+  (loop for item being the hash-key in (items mission) always (<= (gethash item (items mission) 0)
 								 (gethash item (items player) 0))))
